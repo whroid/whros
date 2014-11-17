@@ -30,7 +30,7 @@ public class TestRestController {
 	@RequestMapping(value = "/getUser/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getUser(@PathVariable String id) {
 		User user = userService.getUser(id);
-		logger.debug(user.toString());
+		logger.debug("11111111111----->>"+user.toString());
 		ResponseFactory<User> rf = new ResponseFactory<User>(new String());
 		rf.setPayload(user);
 		return rf.getResponse();

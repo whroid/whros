@@ -37,6 +37,7 @@
 				<value>com.whroid.ee.whros.*</value>
 			</list>
 		</property>
+		<property name="mappingLocations" value="classpath:META-INF/hibernate/**/*.hbm.xml"/>
 		<property name="hibernateProperties">
 			<value>
 				hibernate.dialect=${hibernate.dialect}
@@ -44,7 +45,7 @@
 				hibernate.cache.use_second_level_cache=true
 				hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
 				hibernate.show_sql=${hibernate.show_sql}
-				hibernate.current_session_context_class=thread
+			    hibernate.current_session_context_class=thread
 			</value>
 			<!-- Turn batching off for better error messages under PostgreSQL -->
 			<!-- hibernate.jdbc.batch_size=0 -->

@@ -4,14 +4,14 @@
 
 
     
-     <query name="getUserById">
+     <query name="c.getUserById">
         
-        from t_user u where u.id = :id
+        from User u where u.id = :id
         
     </query> 
     
-    <query name="getUsers">
-    from t_user ;</query>
+    <query name="c.getUsers">
+    from User</query>
     
     
 </hibernate-mapping>
