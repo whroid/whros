@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.whroid.ee.whros.base.entity.RequestEntity;
 import com.whroid.ee.whros.base.entity.ResponseEntity;
@@ -20,7 +21,7 @@ import com.whroid.ee.whros.test.service.UserService;
 
 
 @Controller
-@RequestMapping("/rest/test")
+@RequestMapping("/rest")
 public class TestRestController {
 
 	Logger logger = LoggerFactory.getLogger(TestRestController.class);
@@ -28,16 +29,19 @@ public class TestRestController {
 	public UserService userService;
 
 	@RequestMapping(value = "/getUser/{id}", method = RequestMethod.GET)
-	public ResponseEntity<User> getUser(@PathVariable String id) {
+	public @ResponseBody ResponseEntity<User> getUser(@PathVariable String id) {
 		User user = userService.getUser(id);
-		logger.debug("11111111111----->>"+user.toString());
+		
 		ResponseFactory<User> rf = new ResponseFactory<User>(new String());
 		rf.setPayload(user);
 		return rf.getResponse();
 	}
 
 	@RequestMapping(value = "/t", method = RequestMethod.GET)
-	public ResponseEntity<String> getTest() {
+	public @ResponseBody ResponseEntity<String> getTest() {
+		logger.info("11111111111----->>"+System.currentTimeMillis());
+		logger.debug("11111111111333----->>"+System.currentTimeMillis());
+		System.out.println("11111111111222222----->>"+System.currentTimeMillis());
 		ResponseFactory<String> rf = new ResponseFactory<String>(new String());
 		rf.setPayload("hello world");
 		return rf.getResponse();

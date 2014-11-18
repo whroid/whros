@@ -65,15 +65,16 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>2.4</version>
+			<version>2.5</version>
 			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet.jsp</groupId>
+					<artifactId>jsp-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-			<version>2.1</version>
-			<scope>provided</scope>
-		</dependency>
+		
 
 
 		<!-- PERSISTENCE begin -->
@@ -169,18 +170,26 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
+				<version>3.1</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-
-			<!-- define jetty plugin -->
 			<plugin>
-				<groupId>org.kohsuke.jetty</groupId>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>7.0.0pre1</version>
+				<version>8.1.15.v20140411</version>
+				<configuration>
+					<webApp>
+						<contextPath>/${project.build.finalName}</contextPath>
+					</webApp>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

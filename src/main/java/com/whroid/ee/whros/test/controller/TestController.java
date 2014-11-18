@@ -30,6 +30,7 @@ public class TestController {
 	@RequestMapping(value="/user",method=RequestMethod.GET)
 	public String testUser(Model model)
 	{
+		logger.info("TTTTTTTTTTTTTTTTTT----->>"+System.currentTimeMillis());
 		List<User> users = userService.getUser();
 		model.addAttribute("users", users);
 		return "/test";
